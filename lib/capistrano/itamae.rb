@@ -1,4 +1,6 @@
 require "capistrano/itamae/version"
+require "capistrano"
+require "capistrano/itamae/dsl"
 
 module Capistrano
   module Itamae

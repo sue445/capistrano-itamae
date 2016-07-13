@@ -1,15 +1,15 @@
 # Capistrano::Itamae
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/capistrano/itamae`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Run itamae in capistrano task
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capistrano-itamae'
+group :development do
+  gem "capistrano-itamae", require: false
+end
 ```
 
 And then execute:
@@ -22,7 +22,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Capfile
+
+```ruby
+require "capistrano/itamae"
+```
+
+config/deploy.rb
+
+```ruby
+desc "Run itamae"
+  task :itamae do
+    on roles(:all) do
+      itamae_ssh "/path/to/recipe.rb"
+    end
+  end
+end
+```
+
+## Variables
+* `itamae_path` : path to itamae executable file (default: `bundle exec itamae`)
+* `itamae_default_options` : (default: `[]`)
 
 ## Development
 
@@ -32,7 +52,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/capistrano-itamae.
+Bug reports and pull requests are welcome on GitHub at https://github.com/sue445/capistrano-itamae.
 
 
 ## License
