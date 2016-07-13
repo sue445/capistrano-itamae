@@ -21,6 +21,16 @@ build:
     # Read more about steps on our dev center:
     # http://devcenter.wercker.com/docs/steps/index.html
     steps:
+        - script:
+            name: Set variables
+            code: |
+                # Quiet vagrant not_in_installer message
+                # ref
+                # * https://github.com/mitchellh/vagrant/blob/v1.8.4/templates/locales/en.yml#L339-L345
+                # * https://github.com/mitchellh/vagrant/blob/v1.8.4/bin/vagrant#L167-L170
+                # * https://github.com/mitchellh/vagrant/blob/v1.8.4/lib/vagrant/shared_helpers.rb#L48-L53
+                export VAGRANT_I_KNOW_WHAT_IM_DOING_PLEASE_BE_QUIET=true
+
         - bundle-install:
             jobs: 4
 
