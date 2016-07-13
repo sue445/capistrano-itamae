@@ -2,6 +2,8 @@
 
 Run itamae in capistrano task
 
+[![Gem Version](https://badge.fury.io/rb/capistrano-itamae.svg)](https://badge.fury.io/rb/capistrano-itamae)
+
 ## Installation
 
 Add this line to your application's Gemfile:
