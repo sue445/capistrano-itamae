@@ -48,7 +48,7 @@ build:
 
         - script:
             name: start vm
-            code: bundle exec vagrant up centos70 --provider=digital_ocean
+            code: bundle exec vagrant up default --provider=digital_ocean
             cwd: spec/integration
 
         - script:
