@@ -51,6 +51,11 @@ build:
             code: bundle exec vagrant up centos70 --provider=digital_ocean
             cwd: spec/integration
 
+        - script:
+            name: run integration test
+            code: bundle exec rake spec
+            cwd: spec/integration
+
     after-steps:
         - script:
             name: shutdown all vms
