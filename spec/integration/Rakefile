@@ -1,0 +1,25 @@
+require "rspec/core/rake_task"
+
+desc "Run integration test"
+task :spec => ["spec:integration"]
+
+HOST = "default"
+
+namespace :spec do
+  namespace :integration do
+    puts "Running itamae to #{HOST} ..."
+    task :itamae do
+      Bundler.with_clean_env do
+        sh "bundle exec cap development itamae"
+      end
+    end
+
+    RSpec::Core::RakeTask.new(:spec) do |t|
+      puts "Running tests to #{HOST} ..."
+      ENV["TARGET_HOST"] = HOST
+      t.pattern = "spec/*_spec.rb"
+    end
+  end
+
+  task :integration => ["integration:itamae", "integration:spec"]
+end
