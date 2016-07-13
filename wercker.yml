@@ -26,7 +26,7 @@ build:
 
         - script:
             name: create .ssh directory
-            code: mkdir -p $HOME/.ssh
+            code: mkdir -m 700 -p $HOME/.ssh
 
         - create-file:
             name: put private key
