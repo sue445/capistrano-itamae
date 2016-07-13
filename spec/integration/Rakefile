@@ -1,0 +1,16 @@
+desc "Run integration test"
+task :spec => ["spec:integration"]
+
+namespace :spec do
+  namespace :integration do
+    desc "Run itamae"
+    task :itamae do
+    end
+
+    desc "Run spec"
+    task :spec do
+    end
+  end
+
+  task :integration => ["integration:itamae", "integration:spec"]
+end
