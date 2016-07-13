@@ -4,6 +4,8 @@ Run itamae in capistrano task
 
 [![Gem Version](https://badge.fury.io/rb/capistrano-itamae.svg)](https://badge.fury.io/rb/capistrano-itamae)
 
+[![wercker status](https://app.wercker.com/status/a2f734cda581d3d221e10b1ede83bb71/m/master "wercker status")](https://app.wercker.com/project/bykey/a2f734cda581d3d221e10b1ede83bb71)
+
 ## Installation
 
 Add this line to your application's Gemfile:
