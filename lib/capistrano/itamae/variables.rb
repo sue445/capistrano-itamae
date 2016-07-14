@@ -9,8 +9,8 @@ module Capistrano
         fetch(:itamae_bin_name, "itamae")
       end
 
-      def itamae_default_options
-        fetch(:itamae_default_options, [])
+      def itamae_ssh_default_options
+        fetch(:itamae_ssh_default_options, [])
       end
 
       def ssh_options

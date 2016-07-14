@@ -9,7 +9,7 @@ module Capistrano
 
         itamae_options =
           if options.empty?
-            itamae_default_options
+            itamae_ssh_default_options
           else
             options
           end
