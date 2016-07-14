@@ -79,12 +79,11 @@ def set_vagrant_user
       forward_agent: ssh_config["ForwardAgent"] == "yes"
 end
 
-set :cookbooks_path, -> { File.expand_path(File.join(__dir__, "..", "cookbooks"), __FILE__) }
+set :itamae_ssh_default_options, ["--node-yaml=cookbooks/node.yml"]
 
 task :itamae do
-  cookbooks_path = fetch(:cookbooks_path)
-
   on roles(:all) do
-    itamae_ssh "#{cookbooks_path}/memcached.rb"
+    itamae_ssh "memcached.rb"
+    itamae_ssh "tmux.rb", "--dry-run"
   end
 end
