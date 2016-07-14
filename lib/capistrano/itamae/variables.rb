@@ -5,8 +5,8 @@ module Capistrano
         Pathname.new(fetch(:itamae_cookbooks_path, "cookbooks"))
       end
 
-      def itamae_path
-        fetch(:itamae_path, "bundle exec itamae")
+      def itamae_bin_name
+        fetch(:itamae_bin_name, "itamae")
       end
 
       def itamae_default_options
