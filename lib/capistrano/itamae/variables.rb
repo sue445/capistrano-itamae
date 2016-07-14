@@ -1,6 +1,10 @@
 module Capistrano
   module Itamae
     module Variables
+      def itamae_cookbooks_path
+        Pathname.new(fetch(:itamae_cookbooks_path, "cookbooks"))
+      end
+
       def itamae_path
         fetch(:itamae_path, "bundle exec itamae")
       end
