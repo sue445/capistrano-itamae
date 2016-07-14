@@ -1,6 +1,6 @@
 # Capistrano::Itamae
 
-Run itamae in capistrano task
+Run [itamae](https://github.com/itamae-kitchen/itamae) in capistrano task
 
 [![Gem Version](https://badge.fury.io/rb/capistrano-itamae.svg)](https://badge.fury.io/rb/capistrano-itamae)
 
