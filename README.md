@@ -59,8 +59,8 @@ end
 see [Capistrano::Itamae::DSL#itamae_ssh](lib/capistrano/itamae/dsl.rb)
 
 ## Variables
-* `itamae_cookbooks_path` : path to cookbooks dir (default: "cookbooks")
-* `itamae_bin_name` : itamae executable name (default: `itamae`)
+* `itamae_cookbooks_path` : path to cookbooks dir (default: `"cookbooks"`)
+* `itamae_bin_name` : itamae executable name (default: `"itamae"`)
 * `itamae_ssh_default_options` : `itamae ssh` default options (default: empty)
 
 ## Development
