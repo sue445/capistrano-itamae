@@ -7,8 +7,7 @@ module Capistrano
       # @param recipe_files [String, Array<String>]
       # @param options [Array] itamae ssh options (default is itamae_ssh_default_options)
       def itamae_ssh(recipe_files, *options)
-        recipe_files = Array(recipe_files) unless recipe_files.is_a?(Array)
-        recipe_paths = recipe_files.map { |file| itamae_cookbooks_path.join(file) }
+        recipe_paths = Array(recipe_files).map { |file| itamae_cookbooks_path.join(file) }
 
         itamae_options =
           if options.empty?
