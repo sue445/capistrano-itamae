@@ -22,14 +22,19 @@ build:
     # http://devcenter.wercker.com/docs/steps/index.html
     steps:
         - script:
-            name: Set variables
+            name: Install Vagrant
             code: |
-                # Quiet vagrant not_in_installer message
-                # ref
-                # * https://github.com/mitchellh/vagrant/blob/v1.8.4/templates/locales/en.yml#L339-L345
-                # * https://github.com/mitchellh/vagrant/blob/v1.8.4/bin/vagrant#L167-L170
-                # * https://github.com/mitchellh/vagrant/blob/v1.8.4/lib/vagrant/shared_helpers.rb#L48-L53
-                export VAGRANT_I_KNOW_WHAT_IM_DOING_PLEASE_BE_QUIET=true
+                wget https://releases.hashicorp.com/vagrant/1.8.4/vagrant_1.8.4_x86_64.rpm
+                rpm -i vagrant_1.8.4_x86_64.rpm
+                vagrant plugin install vagrant-digitalocean
+
+        - script:
+            # NOTE: vagrant v1.8.4 depends on bundler v1.12.5
+            # https://github.com/mitchellh/vagrant/blob/v1.8.4/vagrant.gemspec#L23
+            name: Install bundler
+            code: |
+                 gem uninstall bundler --all --force
+                 gem install bundler -v 1.12.5
 
         - bundle-install:
             jobs: 4
@@ -58,12 +63,12 @@ build:
 
         - script:
             name: start vm
-            code: bundle exec vagrant up default --provider=digital_ocean
+            code: vagrant up default --provider=digital_ocean
             cwd: spec/integration
 
         - script:
             name: vagrant ssh-config
-            code: bundle exec vagrant ssh-config
+            code: vagrant ssh-config
             cwd: spec/integration
 
         - script:
@@ -80,7 +85,7 @@ build:
 
         - script:
             name: shutdown all vms
-            code: bundle exec vagrant destroy -f
+            code: vagrant destroy -f
             cwd: spec/integration
 
         - wantedly/pretty-slack-notify:
