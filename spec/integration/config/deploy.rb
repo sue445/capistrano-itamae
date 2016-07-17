@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.5.0'
+# lock '3.5.0'
 
 set :application, 'dummy'
 set :repo_url, 'ssh://git@github.com/sue445/capistrano-itamae.git'
