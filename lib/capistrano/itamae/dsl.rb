@@ -5,16 +5,11 @@ module Capistrano
 
       # Run `itamae ssh`
       # @param recipe_files [String, Array<String>]
-      # @param options [Array] itamae ssh options (default is itamae_ssh_default_options)
-      def itamae_ssh(recipe_files, *options)
+      # @param options [String] itamae ssh options
+      def itamae_ssh(recipe_files, options = nil)
         recipe_paths = Array(recipe_files).map { |file| itamae_cookbooks_path.join(file) }
 
-        itamae_options =
-          if options.empty?
-            itamae_ssh_default_options
-          else
-            options
-          end
+        itamae_options = [options, itamae_ssh_default_options].compact
 
         # NOTE: store server (`host` is changed to localhost in `run_locally`)
         server = host
