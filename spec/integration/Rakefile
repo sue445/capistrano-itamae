@@ -10,7 +10,7 @@ namespace :spec do
     desc "Running itamae to #{HOST} ..."
     task :itamae do
       Bundler.with_clean_env do
-        sh "bundle exec cap development itamae"
+        sh "bundle exec cap development itamae --trace"
       end
     end
 

@@ -37,7 +37,7 @@ config/deploy.rb
 ```ruby
 set :itamae_cookbooks_path, "cookbooks"
 
-set :itamae_ssh_default_options, ["--node-yaml=node.yml"]
+set :itamae_ssh_default_options, { node_yaml: "node.yml" }
 
 desc "Run itamae"
   task :itamae do
@@ -49,7 +49,7 @@ desc "Run itamae"
       itamae_ssh ["recipe1.rb", "recipe2.rb"]
 
       # Run itamae ssh --node-yaml=node.yml cookbooks/recipe.rb --dry-run
-      itamae_ssh "recipe.rb", "--dry-run"
+      itamae_ssh "recipe.rb", dry_run: true
     end
   end
 end
@@ -60,7 +60,7 @@ see [Capistrano::Itamae::DSL#itamae_ssh](lib/capistrano/itamae/dsl.rb)
 ## Variables
 * `itamae_cookbooks_path` : path to cookbooks dir (default: "cookbooks")
 * `itamae_bin_name` : itamae executable name (default: `itamae`)
-* `itamae_ssh_default_options` : `itamae ssh` default options (default: `[]`)
+* `itamae_ssh_default_options` : `itamae ssh` default options (default: `{}`)
   * If `options` is not passed, use this
 
 ## Development
