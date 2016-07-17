@@ -10,7 +10,7 @@ module Capistrano
       end
 
       def itamae_ssh_default_options
-        fetch(:itamae_ssh_default_options, [])
+        fetch(:itamae_ssh_default_options)
       end
     end
   end
