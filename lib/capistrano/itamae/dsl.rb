@@ -33,6 +33,7 @@ module Capistrano
         command
       end
 
+      # via. https://github.com/unosk/capistano-with-terraform-and-itamae/blob/feb0d7d90f5c88412af9728586e598742dd36761/lib/capistrano/tasks/itamae.rake#L38-L51
       def ssh_options(server)
         ssh_options = fetch(:ssh_options, {}).dup
         ssh_options.merge!(server.ssh_options) if server.ssh_options
