@@ -3,10 +3,12 @@ module Capistrano
     module DSL
       require "bundler"
 
+      DEFAULT_RECIPE = "default.rb"
+
       # Run `itamae ssh`
       # @param recipe_files [String, Array<String>]
       # @param options [String] itamae ssh options
-      def itamae_ssh(recipe_files, options = nil)
+      def itamae_ssh(recipe_files = DEFAULT_RECIPE, options = nil)
         recipe_paths = Array(recipe_files).map { |file| itamae_cookbooks_path.join(file) }
 
         itamae_options = [options, itamae_ssh_default_options].compact
