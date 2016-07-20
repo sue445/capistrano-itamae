@@ -43,6 +43,9 @@ set :itamae_ssh_default_options, "--node-yaml=node.yml"
 desc "Run itamae"
   task :itamae do
     on roles(:all) do
+      # Run itamae ssh --node-yaml=node.yml cookbooks/default.rb
+      itamae_ssh
+
       # Run itamae ssh --node-yaml=node.yml cookbooks/recipe.rb
       itamae_ssh "recipe.rb"
 
