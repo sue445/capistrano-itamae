@@ -3,6 +3,7 @@
 Run [itamae](https://github.com/itamae-kitchen/itamae) in capistrano task
 
 [![Gem Version](https://badge.fury.io/rb/capistrano-itamae.svg)](https://badge.fury.io/rb/capistrano-itamae)
+[![Dependency Status](https://gemnasium.com/badges/github.com/sue445/capistrano-itamae.svg)](https://gemnasium.com/github.com/sue445/capistrano-itamae)
 [![Code Climate](https://codeclimate.com/github/sue445/capistrano-itamae/badges/gpa.svg)](https://codeclimate.com/github/sue445/capistrano-itamae)
 
 [![wercker status](https://app.wercker.com/status/a2f734cda581d3d221e10b1ede83bb71/m/master "wercker status")](https://app.wercker.com/project/bykey/a2f734cda581d3d221e10b1ede83bb71)
