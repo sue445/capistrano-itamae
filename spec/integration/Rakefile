@@ -1,7 +1,7 @@
 require "rspec/core/rake_task"
 
 desc "Run integration test"
-task :spec => ["spec:integration"]
+task :spec => ["spec:dry_run_integration", "spec:integration"]
 
 HOST = "default"
 
@@ -18,8 +18,27 @@ namespace :spec do
       puts "Running tests to #{HOST} ..."
       ENV["TARGET_HOST"] = HOST
       t.pattern = "spec/*_spec.rb"
+      t.rspec_opts = "--tag=~dry_run"
     end
   end
 
   task :integration => ["integration:itamae", "integration:spec"]
+
+  namespace :dry_run_integration do
+    desc "Running itamae with dry run option to #{HOST} ..."
+    task :itamae do
+      Bundler.with_clean_env do
+        sh "bundle exec cap --dry-run development itamae --trace"
+      end
+    end
+
+    RSpec::Core::RakeTask.new(:spec) do |t|
+      puts "Running dry run tests to #{HOST} ..."
+      ENV["TARGET_HOST"] = HOST
+      t.pattern = "spec/*_spec.rb"
+      t.rspec_opts = "--tag=dry_run"
+    end
+  end
+
+  task :dry_run_integration => ["dry_run_integration:itamae", "dry_run_integration:spec"]
 end

@@ -49,6 +49,7 @@ module Capistrano
         options << "--user #{ssh_options[:user]}" if ssh_options[:user]
         options << "--port #{ssh_options[:port]}" if ssh_options[:port]
         options << "--key #{ssh_options[:key]}" if ssh_options[:key]
+        options << "--dry-run" if dry_run?
         options
       end
     end

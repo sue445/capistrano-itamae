@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "bundler"
-  spec.add_dependency "capistrano", ">= 3"
+  spec.add_dependency "capistrano", ">= 3.5.0"
   spec.add_dependency "itamae"
 
   spec.add_development_dependency "pry-byebug"

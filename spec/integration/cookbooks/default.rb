@@ -1,1 +1,1 @@
-package "wget"
+package "zsh"
