@@ -60,6 +60,14 @@ desc "Run itamae"
 end
 ```
 
+```bash
+# Run itamae ssh --dry-run 〜
+$ bundle exec cap --dry-run 〜
+
+# Run itamae ssh 〜
+$ bundle exec cap 〜
+```
+
 see [Capistrano::Itamae::DSL#itamae_ssh](lib/capistrano/itamae/dsl.rb)
 
 ## Variables
