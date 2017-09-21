@@ -11,6 +11,7 @@ namespace :spec do
     task :itamae do
       Bundler.with_clean_env do
         sh "bundle exec cap development itamae --trace"
+        sh "bundle exec cap development itamae_with_node_options --trace"
       end
     end
 
@@ -29,6 +30,7 @@ namespace :spec do
     task :itamae do
       Bundler.with_clean_env do
         sh "bundle exec cap --dry-run development itamae --trace"
+        sh "bundle exec cap --dry-run development itamae_with_node_options --trace"
       end
     end
 

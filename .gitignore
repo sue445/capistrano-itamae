@@ -9,3 +9,4 @@
 /tmp/
 spec/integration/.vagrant/
 spec/integration/log/
+spec/integration/node.json

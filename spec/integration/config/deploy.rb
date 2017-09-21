@@ -88,3 +88,10 @@ task :itamae do
     itamae_ssh
   end
 end
+
+task :itamae_with_node_options do
+  on roles(:all) do
+    set :itamae_node_options, {:user => "jon.snow"}
+    itamae_ssh "user.rb"
+  end
+end
