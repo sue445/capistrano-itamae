@@ -2,6 +2,8 @@ module Capistrano
   module Itamae
     module DSL
       require "bundler"
+      require "tempfile"
+      require "json"
 
       DEFAULT_RECIPE = "default.rb"
 
@@ -30,6 +32,7 @@ module Capistrano
 
         command += recipe_paths
         command += itamae_options unless itamae_options.empty?
+        command += node_options if itamae_node_options
         command += ssh_options(server)
 
         command
@@ -51,6 +54,21 @@ module Capistrano
         options << "--key #{ssh_options[:key]}" if ssh_options[:key]
         options << "--dry-run" if dry_run?
         options
+      end
+
+      def node_options
+        return [] unless itamae_node_options.is_a? Object
+        json_file.puts(itamae_node_options.to_json)
+        json_file.close
+        ['--node-json', json_file.path]
+      end
+
+      def json_file
+        @json_file ||= if itamae_temp_node_file
+          ::Tempfile.new(['node','.json'])
+        else
+          ::File.open(itamae_node_file, "w")
+        end
       end
     end
   end
