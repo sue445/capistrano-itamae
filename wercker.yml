@@ -3,7 +3,7 @@
 # https://registry.hub.docker.com/_/ruby/
 # If you want to use a specific version you would use a tag:
 # ruby:2.2.2
-box: drecom/centos-ruby:2.3.1
+box: drecom/centos-ruby:2.5.0
 # You can also use services such as databases. Read more on our dev center:
 # http://devcenter.wercker.com/docs/services/index.html
 # services:
@@ -78,16 +78,10 @@ build:
 
     after-steps:
         - script:
-            name: Set variables
-            code: |
-                # NOTE: override .ruby-version in pretty-slack-notify
-                export RBENV_VERSION=2.3.1
-
-        - script:
             name: shutdown all vms
             code: vagrant destroy -f
             cwd: spec/integration
 
-        - wantedly/pretty-slack-notify:
-            webhook_url: $SLACK_WEBHOOK_URL
+        - slack-notifier:
+            url: $SLACK_WEBHOOK_URL
             username: wercker_build
