@@ -78,16 +78,10 @@ build:
 
     after-steps:
         - script:
-            name: Set variables
-            code: |
-                # NOTE: override .ruby-version in pretty-slack-notify
-                export RBENV_VERSION=2.3.1
-
-        - script:
             name: shutdown all vms
             code: vagrant destroy -f
             cwd: spec/integration
 
-        - wantedly/pretty-slack-notify:
-            webhook_url: $SLACK_WEBHOOK_URL
+        - slack-notifier:
+            url: $SLACK_WEBHOOK_URL
             username: wercker_build
