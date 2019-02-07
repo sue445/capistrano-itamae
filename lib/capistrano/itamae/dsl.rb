@@ -8,7 +8,8 @@ module Capistrano
       # Run `itamae ssh`
       # @param recipe_files [String, Array<String>]
       # @param options [String] itamae ssh options
-      def itamae_ssh(recipe_files = DEFAULT_RECIPE, options: nil)
+      # @param environment [Hash] environment variables. (passed to `with`)
+      def itamae_ssh(recipe_files = DEFAULT_RECIPE, options: nil, environment: {})
         recipe_paths = Array(recipe_files).map { |file| itamae_cookbooks_path.join(file) }
 
         itamae_options = [options, itamae_ssh_default_options].compact
@@ -18,7 +19,9 @@ module Capistrano
 
         run_locally do
           Bundler.with_clean_env do
-            execute(*generate_itamae_ssh_command(server, recipe_paths, itamae_options))
+            with environment do
+              execute(*generate_itamae_ssh_command(server, recipe_paths, itamae_options))
+            end
           end
         end
       end

@@ -53,6 +53,9 @@ desc "Run itamae"
 
       # Run itamae ssh --node-yaml=node.yml cookbooks/recipe.rb --no-sudo --log-level=debug
       itamae_ssh "recipe.rb", options: "--no-sudo --log-level=debug"
+
+      # Pass $PATH to `itamae ssh`
+      itamae_ssh "recipe.rb", environment: { path: ENV["PATH"] }
     end
   end
 end
