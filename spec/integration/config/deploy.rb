@@ -85,6 +85,7 @@ task :itamae do
   on roles(:all) do
     itamae_ssh "memcached.rb"
     itamae_ssh "tmux.rb", options: "--dry-run"
+    itamae_ssh "with_environment.rb", environment: { foo: "foo" }
     itamae_ssh
   end
 end
