@@ -84,7 +84,7 @@ set :itamae_ssh_default_options, "--node-yaml=cookbooks/node.yml"
 task :itamae do
   on roles(:all) do
     itamae_ssh "memcached.rb"
-    itamae_ssh "tmux.rb", "--dry-run"
+    itamae_ssh "tmux.rb", options: "--dry-run"
     itamae_ssh
   end
 end

@@ -52,7 +52,7 @@ desc "Run itamae"
       itamae_ssh ["recipe1.rb", "recipe2.rb"]
 
       # Run itamae ssh --node-yaml=node.yml cookbooks/recipe.rb --dry-run
-      itamae_ssh "recipe.rb", "--dry-run"
+      itamae_ssh "recipe.rb", options: "--dry-run"
     end
   end
 end
