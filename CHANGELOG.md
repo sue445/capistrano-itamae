@@ -1,5 +1,11 @@
 ## master
-[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.0...master)
+[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.1...master)
+
+## v1.0.1
+[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.0...v1.0.1)
+
+* Resolved. bundler deprecation warning
+  * https://github.com/sue445/capistrano-itamae/pull/26
 
 ## v1.0.0
 [full changelog](http://github.com/sue445/capistrano-itamae/compare/v0.2.0...v1.0.0)
