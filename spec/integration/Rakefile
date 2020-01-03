@@ -9,7 +9,7 @@ namespace :spec do
   namespace :integration do
     desc "Running itamae to #{HOST} ..."
     task :itamae do
-      Bundler.with_clean_env do
+      Bundler.with_original_env do
         sh "bundle exec cap development itamae --trace"
       end
     end
@@ -27,7 +27,7 @@ namespace :spec do
   namespace :dry_run_integration do
     desc "Running itamae with dry run option to #{HOST} ..."
     task :itamae do
-      Bundler.with_clean_env do
+      Bundler.with_original_env do
         sh "bundle exec cap --dry-run development itamae --trace"
       end
     end
