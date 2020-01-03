@@ -18,7 +18,7 @@ module Capistrano
         server = host
 
         run_locally do
-          Bundler.with_clean_env do
+          Bundler.with_original_env do
             with environment do
               execute(*generate_itamae_ssh_command(server, recipe_paths, itamae_options))
             end
