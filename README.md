@@ -3,6 +3,7 @@
 Run [itamae](https://github.com/itamae-kitchen/itamae) in capistrano task
 
 [![Gem Version](https://badge.fury.io/rb/capistrano-itamae.svg)](https://badge.fury.io/rb/capistrano-itamae)
+[![Build Status](https://github.com/sue445/capistrano-itamae/workflows/test/badge.svg?branch=master)](https://github.com/sue445/capistrano-itamae/actions?query=workflow%3Atest)
 [![Code Climate](https://codeclimate.com/github/sue445/capistrano-itamae/badges/gpa.svg)](https://codeclimate.com/github/sue445/capistrano-itamae)
 
 ## Installation
