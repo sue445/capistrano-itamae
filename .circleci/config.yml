@@ -1,0 +1,83 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2.1
+
+orbs:
+  ruby-orbs: sue445/ruby-orbs@volatile
+
+executors:
+  ruby:
+    parameters:
+      tag:
+        type: string
+        default: "latest"
+    docker:
+      - image: circleci/ruby:<< parameters.tag >>
+    working_directory: ~/app
+
+jobs:
+  integration_test:
+    parameters:
+      version:
+        type: string
+    executor:
+      name: ruby
+      tag: << parameters.version >>
+    steps:
+      - checkout
+      - run: ruby --version
+      - run: bundle --version
+      - run: gem --version
+      - setup_remote_docker
+      - run:
+          name: Setup sandbox setver
+          working_directory: spec/integration
+          command: |
+            set -xe
+            docker image build . -t ssh_server
+            docker run -d -p 10000:22 ssh_server
+      - ruby-orbs/bundle-install:
+          cache_key_prefix: "v2-"
+          with_gemfile_lock: false
+          gemspec_name: "capistrano-itamae"
+          update_always: true
+      - run:
+          name: Run integration test
+          working_directory: spec/integration
+          command: |
+            set -xe
+            bundle exec rake spec
+
+build_jobs: &build_jobs
+  - integration_test:
+      name:    "rspec:2.3"
+      version: "2.3"
+  - integration_test:
+      name:    "rspec:2.4"
+      version: "2.4"
+  - integration_test:
+      name:    "rspec:2.5"
+      version: "2.5"
+  - integration_test:
+      name:    "rspec:2.6"
+      version: "2.6"
+  - integration_test:
+      name:    "rspec:2.7"
+      version: "2.7"
+
+workflows:
+  version: 2
+
+  build:
+    jobs: *build_jobs
+
+  weekly_build:
+    triggers:
+      - schedule:
+          cron: "00 10 * * 5" # JST 19:00 (Fri)
+          filters:
+            branches:
+              only: master
+    jobs: *build_jobs

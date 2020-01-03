@@ -79,7 +79,7 @@ def set_vagrant_user
       forward_agent: ssh_config["ForwardAgent"] == "yes"
 end
 
-set :itamae_ssh_default_options, "--node-yaml=cookbooks/node.yml"
+set :itamae_ssh_default_options, "--node-yaml=cookbooks/node.yml --config=cookbooks/config.yml"
 
 task :itamae do
   on roles(:all) do
