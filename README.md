@@ -3,7 +3,7 @@
 Run [itamae](https://github.com/itamae-kitchen/itamae) in capistrano task
 
 [![Gem Version](https://badge.fury.io/rb/capistrano-itamae.svg)](https://badge.fury.io/rb/capistrano-itamae)
-[![wercker status](https://app.wercker.com/status/a2f734cda581d3d221e10b1ede83bb71/s/master "wercker status")](https://app.wercker.com/project/byKey/a2f734cda581d3d221e10b1ede83bb71)
+[![Build Status](https://github.com/sue445/capistrano-itamae/workflows/test/badge.svg?branch=master)](https://github.com/sue445/capistrano-itamae/actions?query=workflow%3Atest)
 [![Code Climate](https://codeclimate.com/github/sue445/capistrano-itamae/badges/gpa.svg)](https://codeclimate.com/github/sue445/capistrano-itamae)
 
 ## Installation
@@ -85,7 +85,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Integration test
 ```sh
 cd spec/integration
-bundle exec vagrant up
+docker image build . -t ssh_server
+docker run -d -p 10000:22 ssh_server
 bundle exec rake spec
 ```
 

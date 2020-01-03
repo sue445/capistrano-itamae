@@ -7,9 +7,15 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-set_vagrant_user
-
-server vagrant_ssh_config["HostName"], roles: [:app]
+server "localhost",
+       user: "deploy",
+       roles: [:app],
+       ssh_options: {
+         forward_agent: false,
+         auth_methods: %w(password),
+         port: 10000,
+         password: "deploy"
+       }
 
 # role-based syntax
 # ==================

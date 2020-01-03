@@ -49,37 +49,7 @@ namespace :deploy do
 
 end
 
-# via. http://qiita.com/sonots/items/c3d60a155094b839ea0f
-def vagrant_ssh_config
-  return @vagrant_ssh_config if @vagrant_ssh_config
-
-  @vagrant_ssh_config = {}
-  out = `vagrant ssh-config`
-  out.each_line do |line|
-    line.strip!
-    key, value = line.split(" ", 2)
-
-    if key && value
-      value = $1 if value =~ /^"(.+)"$/
-
-      @vagrant_ssh_config[key] = value
-    end
-  end
-  @vagrant_ssh_config
-end
-
-def set_vagrant_user
-  ssh_config = vagrant_ssh_config
-
-  set :user, ssh_config["User"]
-  set :ssh_options,
-      user: ssh_config["User"],
-      port: ssh_config["Port"],
-      keys: [ssh_config["IdentityFile"]],
-      forward_agent: ssh_config["ForwardAgent"] == "yes"
-end
-
-set :itamae_ssh_default_options, "--node-yaml=cookbooks/node.yml"
+set :itamae_ssh_default_options, "--node-yaml=cookbooks/node.yml --config=cookbooks/config.yml"
 
 task :itamae do
   on roles(:all) do
