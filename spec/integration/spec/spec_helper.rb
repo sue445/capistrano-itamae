@@ -15,20 +15,15 @@ else
   set :sudo_password, ENV['SUDO_PASSWORD']
 end
 
-host = ENV['TARGET_HOST']
+set :host, ENV['TARGET_HOST']
 
-`vagrant up #{host}`
-
-config = Tempfile.new('', Dir.tmpdir)
-config.write(`vagrant ssh-config #{host}`)
-config.close
-
-options = Net::SSH::Config.for(host, [config.path])
-
-options[:user] ||= Etc.getlogin
-
-set :host,        options[:host_name] || host
-set :ssh_options, options
+set :ssh_options, {
+  user: "deploy",
+  forward_agent: false,
+  auth_methods: %w(password),
+  port: 10000,
+  password: "deploy"
+}
 
 # Disable sudo
 # set :disable_sudo, true
