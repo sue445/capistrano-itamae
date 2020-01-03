@@ -89,11 +89,19 @@ jobs:
           RBENV_VERSION: ${{ matrix.ruby }}
         continue-on-error: ${{ endsWith(matrix.ruby, '-dev') }}
 
-      - name: Run test
+      - name: Setup sandbox server
+        working-directory: spec/integration
+        run: |
+          set -xe
+          docker image build . -t ssh_server
+          docker run -d -p 10000:22 ssh_server
+
+      - name: Run integration test
+        working-directory: spec/integration
         run: |
           set -xe
           eval "$(rbenv init -)"
-          # TODO: do after
+          bundle exec rake spec
         env:
           RBENV_VERSION: ${{ matrix.ruby }}
         continue-on-error: ${{ endsWith(matrix.ruby, '-dev') }}
