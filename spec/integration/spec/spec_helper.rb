@@ -20,9 +20,9 @@ set :host, ENV['TARGET_HOST']
 set :ssh_options, {
   user: "deploy",
   forward_agent: false,
-  auth_methods: %w(password),
+  auth_methods: %w(publickey),
+  keys: ["config/id_rsa"],
   port: 10000,
-  password: "deploy"
 }
 
 # Disable sudo

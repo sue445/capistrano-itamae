@@ -15,7 +15,12 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN groupadd deploy \
  && useradd --gid deploy --shell /bin/bash --create-home deploy \
  && echo 'deploy ALL=NOPASSWD: ALL' >> /etc/sudoers \
- && echo 'deploy:deploy' | chpasswd
+ && mkdir -m 700 -p /home/deploy/.ssh
+
+COPY config/id_rsa.pub /home/deploy/.ssh/authorized_keys
+
+RUN chmod 600 /home/deploy/.ssh/authorized_keys \
+ && chown -R deploy /home/deploy/.ssh
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]

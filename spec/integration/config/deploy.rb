@@ -49,7 +49,7 @@ namespace :deploy do
 
 end
 
-set :itamae_ssh_default_options, "--node-yaml=cookbooks/node.yml --config=cookbooks/config.yml"
+set :itamae_ssh_default_options, "--node-yaml=cookbooks/node.yml --config=cookbooks/config.yml -i config/id_rsa"
 
 task :itamae do
   on roles(:all) do

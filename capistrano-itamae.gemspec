@@ -23,6 +23,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "capistrano", ">= 3.5.0"
   spec.add_dependency "itamae"
 
+  spec.add_development_dependency "bcrypt_pbkdf", ">= 1.0", "< 2.0"
+  spec.add_development_dependency "ed25519", ">= 1.2", "< 2.0"
   spec.add_development_dependency "pry-byebug"
   spec.add_development_dependency "rake", ">= 11.0"
   spec.add_development_dependency "serverspec"
