@@ -17,7 +17,7 @@ RUN groupadd deploy \
  && echo 'deploy ALL=NOPASSWD: ALL' >> /etc/sudoers \
  && mkdir -m 700 -p /home/deploy/.ssh
 
-COPY config/id_rsa.pub /home/deploy/.ssh/authorized_keys
+COPY config/id_ed25519.pub /home/deploy/.ssh/authorized_keys
 
 RUN chmod 600 /home/deploy/.ssh/authorized_keys \
  && chown -R deploy /home/deploy/.ssh
