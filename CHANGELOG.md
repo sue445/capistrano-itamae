@@ -1,5 +1,11 @@
 ## master
-[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.2...master)
+[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.3...master)
+
+## [v1.0.3](https://github.com/sue445/capistrano-itamae/releases/tag/v1.0.3)
+[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.2...v1.0.3)
+
+* Release gem from GitHub Actions
+  * https://github.com/sue445/capistrano-itamae/pull/50
 
 ## v1.0.2
 [full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.1...v1.0.2)
