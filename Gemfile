@@ -2,3 +2,8 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in capistrano-itamae.gemspec
 gemspec
+
+if Gem::Version.new(RUBY_VERSION) < Gem::Version.new("3.2.0")
+  # NOTE: i18n 1.15.0+ requires Ruby 3.2+
+  gem "i18n", "< 1.15.0"
+end
