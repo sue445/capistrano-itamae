@@ -1,5 +1,11 @@
 ## master
-[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.3...master)
+[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.4...master)
+
+## [v1.0.4](https://github.com/sue445/capistrano-itamae/releases/tag/v1.0.4)
+[full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.3...v1.0.4)
+
+* Migrate release_gem workflow to sue445/workflows (Also testing the gem release)
+  * https://github.com/sue445/capistrano-itamae/pull/88
 
 ## [v1.0.3](https://github.com/sue445/capistrano-itamae/releases/tag/v1.0.3)
 [full changelog](http://github.com/sue445/capistrano-itamae/compare/v1.0.2...v1.0.3)
